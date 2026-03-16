@@ -31,20 +31,24 @@ import matplotlib.pyplot as plt
 # -----------------------
 data = pd.read_csv("ex3.csv")
 
+# Remove extra spaces from column names (important fix)
+data.columns = data.columns.str.strip()
+
+# Select columns
 x = data["R&D Spend"].values
 y = data["Profit"].values
 
 # -----------------------
-# Feature Scaling (IMPORTANT)
+# Feature Scaling
 # -----------------------
 x = (x - np.mean(x)) / np.std(x)
 
 # -----------------------
 # Parameters
 # -----------------------
-w = 0.0          # weight
-b = 0.0          # bias
-alpha = 0.01     # learning rate
+w = 0.0
+b = 0.0
+alpha = 0.01
 epochs = 100
 n = len(x)
 
@@ -54,6 +58,7 @@ losses = []
 # Gradient Descent
 # -----------------------
 for i in range(epochs):
+
     # Prediction
     y_hat = w * x + b
 
@@ -72,19 +77,19 @@ for i in range(epochs):
 # -----------------------
 # Plots
 # -----------------------
-plt.figure(figsize=(12, 5))
+plt.figure(figsize=(12,5))
 
-# Loss vs Iterations
-plt.subplot(1, 2, 1)
+# Loss graph
+plt.subplot(1,2,1)
 plt.plot(losses)
 plt.xlabel("Iterations")
 plt.ylabel("Loss (MSE)")
 plt.title("Loss vs Iterations")
 
-# Regression Line
-plt.subplot(1, 2, 2)
+# Regression graph
+plt.subplot(1,2,2)
 plt.scatter(x, y, label="Data")
-plt.plot(x, w * x + b, label="Regression Line")
+plt.plot(x, w*x + b, label="Regression Line")
 plt.xlabel("R&D Spend (scaled)")
 plt.ylabel("Profit")
 plt.title("Linear Regression using Gradient Descent")
@@ -100,7 +105,6 @@ print("Final Weight (w):", w)
 print("Final Bias (b):", b)
 ```
 ## Output:
-
 
 
 ## Result:
