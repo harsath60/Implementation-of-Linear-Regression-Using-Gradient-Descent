@@ -105,7 +105,7 @@ print("Final Weight (w):", w)
 print("Final Bias (b):", b)
 ```
 ## Output:
-    
+  https://imgur.com/abcd123  
 
 ## Result:
 Thus the program to implement the linear regression using gradient descent is written and verified using python programming.
